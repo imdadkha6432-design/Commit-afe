@@ -1,5 +1,23 @@
-function getCart(){return JSON.parse(localStorage.getItem("cart"))||[]}
-function saveCart(c){localStorage.setItem("cart",JSON.stringify(c))}
-function addToCart(i){const c=getCart();const f=c.find(x=>x.id===i.id);f?f.qty++:c.push({...i,qty:1});saveCart(c)}
-function removeFromCart(id){saveCart(getCart().filter(i=>i.id!==id));renderCart()}
-function updateQty(id,q){const c=getCart();const i=c.find(x=>x.id===id);if(i)i.qty=q;saveCart(c);renderCart()}
+function addToCart(item) {
+  const cart = getCart();
+  const existing = cart.find(i => i.id === item.id);
+  if (existing) existing.qty++;
+  else cart.push({...item, qty:1});
+  saveCart(cart);
+
+  const toast = document.createElement("div");
+  toast.innerText = `${item.name} added to cart ☕`;
+  toast.style.position = "fixed";
+  toast.style.bottom = "20px";
+  toast.style.right = "20px";
+  toast.style.background = "#238636";
+  toast.style.color = "#fff";
+  toast.style.padding = "10px 16px";
+  toast.style.borderRadius = "6px";
+  toast.style.opacity = "0";
+  toast.style.transition = "opacity 0.5s ease";
+  document.body.appendChild(toast);
+  setTimeout(()=>toast.style.opacity="1",10);
+  setTimeout(()=>toast.style.opacity="0",2000);
+  setTimeout(()=>document.body.removeChild(toast),2500);
+}

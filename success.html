@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Success</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="container">
+<h1>☕ Order Placed!</h1>
+<p>Payment: <span id="p"></span></p>
+<a href="index.html" class="btn">Home</a>
+</main>
+<script>
+document.getElementById("p").textContent = localStorage.getItem("payment");
+</script>
+</body>
+</html>

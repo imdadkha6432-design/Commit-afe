@@ -1,0 +1,1 @@
+const menuItems=[{id:1,name:"Espresso",price:120},{id:2,name:"Cappuccino",price:150},{id:3,name:"Cold Brew",price:180}];

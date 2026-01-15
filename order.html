@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="navbar"><h2>☕ Commit Café</h2></header>
+<main class="container">
+<h1>Checkout</h1>
+<form class="card" id="orderForm">
+<label>Name</label><input required>
+<label>Phone</label><input required>
+<label>Payment</label>
+<label><input type="radio" name="payment" value="COD" checked> COD</label>
+<label><input type="radio" name="payment" value="UPI"> UPI - 9380248566@fam</label>
+<button class="btn">Place Order</button>
+</form>
+</main>
+<footer class="footer">© Commit Café</footer>
+<script>
+document.getElementById("orderForm").onsubmit = e => {
+  e.preventDefault();
+  localStorage.removeItem("cart");
+  localStorage.setItem("payment", document.querySelector("input[name=payment]:checked").value);
+  window.location.href = "success.html";
+};
+</script>
+</body>
+</html>
